@@ -1,0 +1,48 @@
+name: Update Formula
+
+on:
+  repository_dispatch:
+    types: [new-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to update to'
+        required: true
+        type: string
+
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get release info
+        id: release
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+          else
+            VERSION="${{ github.event.client_payload.version }}"
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          
+          URL="https://github.com/dnatag/mission-toolkit/archive/refs/tags/${VERSION}.tar.gz"
+          SHA256=$(curl -sL "$URL" | sha256sum | cut -d' ' -f1)
+          
+          echo "url=${URL}" >> $GITHUB_OUTPUT
+          echo "sha256=${SHA256}" >> $GITHUB_OUTPUT
+
+      - name: Update formula
+        run: |
+          sed -i 's|url ".*"|url "${{ steps.release.outputs.url }}"|' Formula/mission-toolkit.rb
+          sed -i 's|sha256 ".*"|sha256 "${{ steps.release.outputs.sha256 }}"|' Formula/mission-toolkit.rb
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Formula/mission-toolkit.rb
+          git commit -m "Update mission-toolkit to ${{ steps.release.outputs.version }}"
+          git push
