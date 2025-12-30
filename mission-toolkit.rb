@@ -10,7 +10,7 @@ class MissionToolkit < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/dnatag/mission-toolkit/releases/download/v1.1.3/mission-toolkit_Darwin_x86_64.zip"
-      sha256 "d27b6b70f24c1ab33e7e70ae2c82b9d2bc2da05dfb7928cb8ecc501eff2f9a29"
+      sha256 "d2f5b3f35bb6f979cc45acdd47d63b24419b57ab486542e2f85ba1fb43d5317f"
 
       def install
         bin.install "m"
@@ -18,7 +18,7 @@ class MissionToolkit < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/dnatag/mission-toolkit/releases/download/v1.1.3/mission-toolkit_Darwin_arm64.zip"
-      sha256 "5728f711d037993ff435ed41671c4d9460f4f5c61f2d04bd5072911e48206b2d"
+      sha256 "25fdd1ed6ff6f71b28251c335a4831a11638b76c2337e31d7297bd9fa037eae1"
 
       def install
         bin.install "m"
@@ -29,14 +29,14 @@ class MissionToolkit < Formula
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/dnatag/mission-toolkit/releases/download/v1.1.3/mission-toolkit_Linux_x86_64.zip"
-      sha256 "e01807fdf285c8c3a494e26c34fdb222d976233550675d1a27d8069da6d99087"
+      sha256 "31b8cbad8a2d0c18a9228a58cbda3e6da4ab37f4ccc36571d3aa48310bd7257e"
       def install
         bin.install "m"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/dnatag/mission-toolkit/releases/download/v1.1.3/mission-toolkit_Linux_arm64.zip"
-      sha256 "17840a5186dc46c585d890b57052974ca2fd6b1038bc98b1a85fa7c3a7473a99"
+      sha256 "7c301cbfc661677980862524d34d14b891c2b700cfcc4bc7b0d7357b27e7b249"
       def install
         bin.install "m"
       end
