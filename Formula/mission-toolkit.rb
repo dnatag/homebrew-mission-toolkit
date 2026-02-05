@@ -5,20 +5,20 @@
 class MissionToolkit < Formula
   desc ""
   homepage ""
-  version "2.2.0"
+  version "2.3.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.2.0/mission-toolkit_Darwin_x86_64.zip"
-      sha256 "93e0a21a09072f79140fd837a4453182103d3af488fe6226fe7aa326a0c5f566"
+      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.3.0/mission-toolkit_Darwin_x86_64.zip"
+      sha256 "e0924d776babd61fe1d8839a6b1ea75c83bddde635ff11c1570d8366dcc7c1a6"
 
       def install
         bin.install "m"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.2.0/mission-toolkit_Darwin_arm64.zip"
-      sha256 "ae8459e09290986f2b5923609a9463e1cb30867b349140f9b7002bba4bda79d8"
+      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.3.0/mission-toolkit_Darwin_arm64.zip"
+      sha256 "33c5f143cdbb564828ce548fbe7a6a57f9612cf4ee2a08b9cae026b912fef935"
 
       def install
         bin.install "m"
@@ -28,15 +28,15 @@ class MissionToolkit < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.2.0/mission-toolkit_Linux_x86_64.zip"
-      sha256 "5d43d995346fe89901d4ba8a1c1d7f7d9a2a99cd48a8b489b51dca342572d0d4"
+      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.3.0/mission-toolkit_Linux_x86_64.zip"
+      sha256 "90adcffbf5283d112ff0ceb9abe6489c78e8e79ff0a62d565f44166c10fe7389"
       def install
         bin.install "m"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.2.0/mission-toolkit_Linux_arm64.zip"
-      sha256 "49c78caee6d1dca028f637076aeb7e8797c4c78fbecbda038277c6e41bcaea0b"
+      url "https://github.com/dnatag/mission-toolkit/releases/download/v2.3.0/mission-toolkit_Linux_arm64.zip"
+      sha256 "8885bc08c9cd96dee6b3ef174cb6c78614ec36e289b173977e67455063606a3a"
       def install
         bin.install "m"
       end
